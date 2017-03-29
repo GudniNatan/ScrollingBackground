@@ -5,6 +5,7 @@ import os
 from Constants import *
 from Objects import *
 from Character_sprites import Player
+from Methods import *
 
 
 def main():
@@ -47,14 +48,15 @@ def main():
         # Updating the camera:
         # What we want to happen is for the camera to follow the player while giving some leeway and never going out-of-bounds.
         # We move the leeway rect according to where the player is
-        if player.rect.left <= cameraLeeway.left and player.vx < 0:
-            cameraLeeway.left = player.rect.left
-        elif player.rect.right >= cameraLeeway.right and player.vx > 0:
-            cameraLeeway.right = player.rect.right
-        if player.rect.top <= cameraLeeway.top and player.vy < 0:
-            cameraLeeway.top = player.rect.top
-        if player.rect.bottom >= cameraLeeway.bottom and player.vy > 0:
-            cameraLeeway.bottom = player.rect.bottom
+        if not cameraLeeway.contains(player.rect):
+            if player.rect.left <= cameraLeeway.left:
+                cameraLeeway.left = player.rect.left
+            elif player.rect.right >= cameraLeeway.right:
+                cameraLeeway.right = player.rect.right
+            if player.rect.top <= cameraLeeway.top:
+                cameraLeeway.top = player.rect.top
+            elif player.rect.bottom >= cameraLeeway.bottom:
+                cameraLeeway.bottom = player.rect.bottom
 
         camera.center = cameraLeeway.center  # The camera follows the camera leeway rect
 
