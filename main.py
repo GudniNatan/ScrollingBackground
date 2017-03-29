@@ -42,7 +42,6 @@ def main():
 
     while running:
         # Update
-        print(clock.get_fps())
         player.update_position(clock.get_time())
 
         # Updating the camera:
