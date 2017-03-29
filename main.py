@@ -7,6 +7,7 @@ from Objects import *
 from Character_sprites import Player
 from Methods import *
 
+# By Gudni Natan Gunnarsson, 2017
 
 def main():
     pygame.init()
