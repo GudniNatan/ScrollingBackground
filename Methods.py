@@ -1,5 +1,6 @@
 import pygame
 
+
 def aspect_scale(img, (bx, by)):
     """ Scales 'img' to fit into box bx/by.
      This method will retain the original image's aspect ratio """

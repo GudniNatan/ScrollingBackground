@@ -66,7 +66,7 @@ def main():
         gameSurface.blit(background.image.subsurface(camera), camera)  # We only need to blit what will be inside the camera
         gameSurface.blit(player.image, player.rect)
 
-        # Also draw the camera rects to the gamesurface to visualize camera
+        # Also draw some rectangles to the gameSurface to visualize the camera
         pygame.draw.rect(gameSurface, GREEN, cameraLeeway, 4)
         pygame.draw.rect(gameSurface, ORANGE, camera, 6)
 

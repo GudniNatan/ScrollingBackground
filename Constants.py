@@ -11,7 +11,7 @@ drawSize = 35
 halfDrawSize = drawSize / 2
 window_size = window_width, window_height = 1280, 720   # Would like to make window size dynamic
 
-#Custom Events
-genericEvent = USEREVENT+1
-delayedGenericEvent = USEREVENT+2
-genericTimerEvent = USEREVENT+3
+# Custom Events
+genericEvent = USEREVENT + 1
+delayedGenericEvent = USEREVENT + 2
+genericTimerEvent = USEREVENT + 3

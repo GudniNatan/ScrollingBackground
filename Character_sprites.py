@@ -4,6 +4,7 @@ from Constants import *
 from Objects import *
 from Methods import *
 
+
 class Player(pygame.sprite.DirtySprite):
     def __init__(self, rect, charset, sprite_size_rect):
         super(Player, self).__init__()
