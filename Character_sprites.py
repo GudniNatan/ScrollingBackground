@@ -23,13 +23,11 @@ class Player(pygame.sprite.DirtySprite):
         self.rect = self.image.get_rect()
         self.rect.bottom = rect.bottom - 1
         self.collision_rect.w = self.sprite_size_rect[0]
-        if self.collision_rect.w < drawSize / 2 or self.collision_rect.w > drawSize:
-            self.collision_rect.w = drawSize - 1
         self.walking_phase = 1
         self.moving = False
         self.next_location = self.collision_rect
 
-    def set_sprite_direction(self, lock_on_to=None):
+    def set_sprite_direction(self):
         vx = self.vx
         vy = self.vy
         if vx == 0 and vy == 0 and self.last_direction is not None:
@@ -40,9 +38,9 @@ class Player(pygame.sprite.DirtySprite):
         if vx and vy:
             if vy < 0 and vx < 0:
                 direction = 315
-            if vy < 0 and vx > 0:
+            if vy < 0 < vx:
                 direction = 45
-            if vy > 0 and vx < 0:
+            if vy > 0 > vx:
                 direction = 225
             if vy > 0 and vx > 0:
                 direction = 135
@@ -109,19 +107,8 @@ class Player(pygame.sprite.DirtySprite):
         if time == 0:
             pygame.time.wait(1)
             time = 1
-        pixellimit = drawSize / 4  # should not ever be higher than min(drawsize / 2, self.width / 2)
-        if -pixellimit < self.vx * time < pixellimit:
-            self.realX += self.vx * time
-        elif self.vx < 0:
-            self.realX -= pixellimit
-        else:
-            self.realX += pixellimit
-        if -pixellimit < self.vy * time < pixellimit:
-            self.realY += self.vy * time
-        elif self.vy < 0:
-            self.realY -= pixellimit
-        else:
-            self.realY += pixellimit
+        self.realX += self.vx * time
+        self.realY += self.vy * time
         rect = self.collision_rect
         rect.x = self.realX
         rect.y = self.realY
@@ -130,5 +117,4 @@ class Player(pygame.sprite.DirtySprite):
     def set_position(self, topleft):
         self.collision_rect.topleft = topleft
         (self.realX, self.realY) = topleft
-        self.gridPos = [self.collision_rect.center[0] / drawSize, self.collision_rect.center[1] / drawSize]
         self.rect.midbottom = (self.collision_rect.centerx, self.collision_rect.bottom - 1)

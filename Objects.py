@@ -2,6 +2,7 @@ import pygame
 from Constants import *
 from pygame.locals import *
 
+
 class SimpleSprite(pygame.sprite.DirtySprite):  # Molds rect to sprite
     def __init__(self, top_left_point, surface):
         super(SimpleSprite, self).__init__()
